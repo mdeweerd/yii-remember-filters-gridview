@@ -174,7 +174,8 @@ class ERememberFiltersBehavior extends CActiveRecordBehavior {
     
     
     private function doReadSave() {
-      if ($this->owner->scenario == 'search' || $this->owner->scenario == $this->rememberScenario ) {
+      if ($this->owner->scenario == 'search' || $this->owner->scenario == $this->rememberScenario 
+                  && Yii::app() instanceof CWebApplication)  {
         $this->owner->unsetAttributes();
 
         // store also sorting order
