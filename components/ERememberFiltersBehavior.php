@@ -86,7 +86,10 @@
 * Please VOTE this extension if helps you at:
 * http://www.yiiframework.com/extension/remember-filters-gridview
 */
-
+/**
+ * Modification: afterConstruct disabled, so 'setRememberScenario' is needed to
+ * enable the functionnality.
+ */
 class ERememberFiltersBehavior extends CActiveRecordBehavior {
 
     /**
@@ -207,9 +210,11 @@ class ERememberFiltersBehavior extends CActiveRecordBehavior {
     }
 
     
-    public function afterConstruct($event) {
-        $this->doReadSave();
-    }
+    // By commenting, one must call 'setRememberScenario' to enable the functionnality.
+    // This allows better control over which grids use and do not use the behavior.
+//     public function afterConstruct($event) {
+//         $this->doReadSave();
+//     }
     
     /**
      * Method is called when we need to unset the filters
@@ -232,4 +237,3 @@ class ERememberFiltersBehavior extends CActiveRecordBehavior {
     }
 
 }
-?>
